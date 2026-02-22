@@ -63,12 +63,19 @@ st.markdown('''
 # 3. Data Loading
 @st.cache_data
 def load_data():
+    # This ensures it looks in the same folder as app.py
+    current_dir = os.path.dirname(__file__)
+    file_path = os.path.join(current_dir, "dataset2_threat_detection.csv")
+    
     try:
-        # Mocking data structure based on your previous code
-        df = pd.read_csv("dataset2_threat_detection.csv")
-        df['timestamp'] = pd.to_datetime(df['timestamp'])
+        df = pd.read_csv(file_path)
+        # Check if the column exists before converting
+        if 'timestamp' in df.columns:
+            df['timestamp'] = pd.to_datetime(df['timestamp'])
         return df
-    except:
+    except Exception as e:
+        # This will tell us the REAL error (e.g., a missing column or path issue)
+        st.error(f"Error details: {e}")
         return None
 
 df = load_data()
@@ -150,5 +157,6 @@ if df is not None:
 else:
 
     st.error("⚠️ Dataset not found. Please ensure 'dataset2_threat_detection.csv' is in your project folder.")
+
 
 
