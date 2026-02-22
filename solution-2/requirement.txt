@@ -1,3 +1,4 @@
-Dependencies such as "pandas", "streamlit" must be install
+Dependencies such as "pandas", "streamlit", "pandas" must be install
 
 Main script is app.py
+
