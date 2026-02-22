@@ -2,5 +2,5 @@ streamlit
 pandas
 plotly
 
-Main script is app.py
+
 
