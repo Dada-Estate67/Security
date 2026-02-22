@@ -1,5 +1,8 @@
-Dependencies such as "pandas", "streamlit", "plotly" must be install
+streamlit
+pandas
+plotly
 
 Main script is app.py
+
 
 
