@@ -3,6 +3,17 @@ import pandas as pd
 import plotly.express as px
 import datetime
 
+# This finds the folder where your app.py lives
+current_folder = os.path.dirname(__file__)
+file_path = os.path.join(current_folder, 'dataset2_threat_detection.csv')
+
+# Load the data using the full path
+try:
+    df = pd.read_csv(file_path)
+    st.success("Dataset loaded successfully!")
+except FileNotFoundError:
+    st.error(f"File not found at: {file_path}")
+
 # 1. Page Configuration
 st.set_page_config(page_title="CyberSphere Security", layout="wide", page_icon="🛡️")
 
@@ -147,4 +158,5 @@ if df is not None:
         """, unsafe_allow_html=True)
 
 else:
+
     st.error("⚠️ Dataset not found. Please ensure 'dataset2_threat_detection.csv' is in your project folder.")
